@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIFA World Cup 2026</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#050816;
+    color:#fff;
+}
+
+/* HERO */
+.hero{
+    height:70vh;
+    background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.75)),
+    url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=1800');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:4rem;
+    color:#00e5ff;
+    text-shadow:0 0 25px #00e5ff;
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:1.2rem;
+    color:#ddd;
+}
+
+.hero button{
+    margin-top:25px;
+    padding:14px 30px;
+    border:none;
+    border-radius:30px;
+    background:#00e5ff;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.hero button:hover{
+    transform:scale(1.08);
+}
+
+/* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:#081226;
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:#00e5ff;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.section-title{
+    font-size:2rem;
+    color:#00e5ff;
+    margin-bottom:25px;
+    border-left:5px solid #00e5ff;
+    padding-left:15px;
+}
+
+/* GRID */
+.matches{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(0,229,255,.3);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.content{
+    padding:20px;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:.75rem;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.final{
+    background:#00c853;
+}
+
+.upcoming{
+    background:#ff9800;
+}
+
+.teams{
+    text-align:center;
+    font-size:1.3rem;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.score{
+    text-align:center;
+    font-size:2rem;
+    color:#00e5ff;
+    font-weight:bold;
+}
+
+.date{
+    text-align:center;
+    color:#bbb;
+    margin-top:10px;
+}
+
+/* LIVE TICKER */
+.ticker{
+    background:#00e5ff;
+    color:#000;
+    padding:12px;
+    font-weight:bold;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.ticker span{
+    display:inline-block;
+    padding-left:100%;
+    animation:scroll 25s linear infinite;
+}
+
+@keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-100%);}
+}
+
+/* FOOTER */
+footer{
+    margin-top:60px;
+    text-align:center;
+    padding:30px;
+    background:#081226;
+    color:#aaa;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.5rem;
+}
+
+.hero{
+    height:60vh;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>⚽ FIFA World Cup 2026</h1>
+    <p>Matches, Results & Upcoming Fixtures</p>
+    <button onclick="document.getElementById('results').scrollIntoView()">
+        View Matches
+    </button>
+</div>
+
+<nav>
+    <a href="#results">Results</a>
+    <a href="#fixtures">Fixtures</a>
+    <a href="#about">Tournament</a>
+</nav>
+
+<div class="ticker">
+    <span>
+        ⚽ Netherlands vs Sweden • Germany vs Ivory Coast • Spain vs Saudi Arabia • Belgium vs Iran • France vs Iraq • Argentina vs Austria
+    </span>
+</div>
+
+<div class="container">
+
+<!-- RESULTS -->
+
+<section id="results">
+<h2 class="section-title">Completed Matches</h2>
+
+<div class="matches">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200" alt="">
+<div class="content">
+<span class="badge final">FINAL</span>
+<div class="teams">🇲🇽 Mexico vs South Africa 🇿🇦</div>
+<div class="score">2 - 0</div>
+<div class="date">11 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200" alt="">
+<div class="content">
+<span class="badge final">FINAL</span>
+<div class="teams">🇺🇸 USA vs Paraguay 🇵🇾</div>
+<div class="score">4 - 1</div>
+<div class="date">12 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200" alt="">
+<div class="content">
+<span class="badge final">FINAL</span>
+<div class="teams">🇧🇷 Brazil vs Haiti 🇭🇹</div>
+<div class="score">3 - 0</div>
+<div class="date">19 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200" alt="">
+<div class="content">
+<span class="badge final">FINAL</span>
+<div class="teams">🇦🇷 Argentina vs Algeria 🇩🇿</div>
+<div class="score">3 - 0</div>
+<div class="date">16 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200" alt="">
+<div class="content">
+<span class="badge final">FINAL</span>
+<div class="teams">🏴 England vs Croatia 🇭🇷</div>
+<div class="score">4 - 2</div>
+<div class="date">17 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1486286701208-1d58e9338013?w=1200" alt="">
+<div class="content">
+<span class="badge final">FINAL</span>
+<div class="teams">🇩🇪 Germany vs Curacao 🇨🇼</div>
+<div class="score">7 - 1</div>
+<div class="date">14 June 2026</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<br><br>
+
+<!-- FIXTURES -->
+
+<section id="fixtures">
+<h2 class="section-title">Upcoming Fixtures</h2>
+
+<div class="matches">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200" alt="">
+<div class="content">
+<span class="badge upcoming">UPCOMING</span>
+<div class="teams">🇳🇱 Netherlands vs Sweden 🇸🇪</div>
+<div class="score">VS</div>
+<div class="date">20 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200" alt="">
+<div class="content">
+<span class="badge upcoming">UPCOMING</span>
+<div class="teams">🇩🇪 Germany vs Ivory Coast 🇨🇮</div>
+<div class="score">VS</div>
+<div class="date">20 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=1200" alt="">
+<div class="content">
+<span class="badge upcoming">UPCOMING</span>
+<div class="teams">🇪🇸 Spain vs Saudi Arabia 🇸🇦</div>
+<div class="score">VS</div>
+<div class="date">21 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200" alt="">
+<div class="content">
+<span class="badge upcoming">UPCOMING</span>
+<div class="teams">🇧🇪 Belgium vs Iran 🇮🇷</div>
+<div class="score">VS</div>
+<div class="date">21 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200" alt="">
+<div class="content">
+<span class="badge upcoming">UPCOMING</span>
+<div class="teams">🇫🇷 France vs Iraq 🇮🇶</div>
+<div class="score">VS</div>
+<div class="date">22 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200" alt="">
+<div class="content">
+<span class="badge upcoming">UPCOMING</span>
+<div class="teams">🇦🇷 Argentina vs Austria 🇦🇹</div>
+<div class="score">VS</div>
+<div class="date">22 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200" alt="">
+<div class="content">
+<span class="badge upcoming">UPCOMING</span>
+<div class="teams">🏴 England vs Ghana 🇬🇭</div>
+<div class="score">VS</div>
+<div class="date">23 June 2026</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200" alt="">
+<div class="content">
+<span class="badge upcoming">UPCOMING</span>
+<div class="teams">🇵🇹 Portugal vs Uzbekistan 🇺🇿</div>
+<div class="score">VS</div>
+<div class="date">23 June 2026</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<br><br>
+
+<section id="about">
+<h2 class="section-title">Tournament Info</h2>
+
+<div style="
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:20px;
+line-height:1.8;">
+<p>
+🏆 FIFA World Cup 2026 will be hosted across the United States, Canada, and Mexico.
+The tournament features 48 teams competing for football's most prestigious trophy.
+</p>
+</div>
+</section>
+
+</div>
+
+<footer>
+    © 2026 FIFA World Cup Fan Portal
+</footer>
+
+</body>
+</html>
