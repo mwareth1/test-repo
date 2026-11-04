@@ -1,424 +1,715 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FIFA World Cup 2026</title>
+<title>UEFA 2026 | Football Center</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+  --bg: #080e1b;
+  --panel: #111b2d;
+  --panel2: #17243a;
+  --green: #b7ff48;
+  --text: #f5f7fb;
+  --muted: #8997ad;
+  --border: rgba(255,255,255,.08);
 }
 
-body{
-    font-family:'Segoe UI',sans-serif;
-    background:#050816;
-    color:#fff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(1200px, 92%);
+  margin: auto;
+}
+
+/* HEADER */
+
+header {
+  height: 76px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  background: #0a1221;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--green); }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.season {
+  background: #1a293e;
+  padding: 9px 15px;
+  border-radius: 20px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 /* HERO */
-.hero{
-    height:70vh;
-    background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.75)),
-    url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=1800');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
+
+.hero {
+  padding: 65px 0 50px;
+  background:
+    radial-gradient(ellipse at 85% 20%, #25422c 0%, transparent 38%),
+    linear-gradient(120deg, #101e32, #080e1b);
 }
 
-.hero h1{
-    font-size:4rem;
-    color:#00e5ff;
-    text-shadow:0 0 25px #00e5ff;
+.hero-content {
+  max-width: 720px;
 }
 
-.hero p{
-    margin-top:15px;
-    font-size:1.2rem;
-    color:#ddd;
+.eyebrow {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
 }
 
-.hero button{
-    margin-top:25px;
-    padding:14px 30px;
-    border:none;
-    border-radius:30px;
-    background:#00e5ff;
-    color:#000;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
+.hero h1 {
+  font-size: clamp(38px, 6vw, 67px);
+  line-height: 1.05;
+  letter-spacing: -3px;
+  font-weight: 900;
 }
 
-.hero button:hover{
-    transform:scale(1.08);
+.hero h1 span { color: var(--green); }
+
+.hero p {
+  margin-top: 20px;
+  color: #a5b2c5;
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 530px;
 }
 
-/* NAVBAR */
-nav{
-    position:sticky;
-    top:0;
-    z-index:999;
-    background:#081226;
-    padding:15px;
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    border-bottom:1px solid rgba(255,255,255,.1);
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
 }
 
-nav a{
-    color:#fff;
-    text-decoration:none;
-    font-weight:600;
+.btn {
+  padding: 13px 22px;
+  border-radius: 7px;
+  font-weight: 800;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
 }
 
-nav a:hover{
-    color:#00e5ff;
+.btn-primary {
+  background: var(--green);
+  color: #101a0a;
 }
 
-.container{
-    max-width:1400px;
-    margin:auto;
-    padding:40px 20px;
+.btn-secondary {
+  background: #243249;
+  color: white;
 }
 
-.section-title{
-    font-size:2rem;
-    color:#00e5ff;
-    margin-bottom:25px;
-    border-left:5px solid #00e5ff;
-    padding-left:15px;
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+  margin: 30px auto;
 }
 
-/* GRID */
-.matches{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
+.stat {
+  background: var(--panel);
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
-/* CARD */
-.card{
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    border-radius:20px;
-    overflow:hidden;
-    transition:.35s;
+.stat small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 25px rgba(0,229,255,.3);
+.stat h2 {
+  font-size: 29px;
+  margin-top: 10px;
+  letter-spacing: -1px;
 }
 
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
+.stat h2 span {
+  color: var(--green);
 }
 
-.content{
-    padding:20px;
+/* SECTION */
+
+.section {
+  padding: 25px 0 50px;
 }
 
-.badge{
-    display:inline-block;
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:.75rem;
-    font-weight:bold;
-    margin-bottom:15px;
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
 }
 
-.final{
-    background:#00c853;
+.section-heading h2 {
+  font-size: 23px;
+  font-weight: 800;
 }
 
-.upcoming{
-    background:#ff9800;
+.section-heading p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 7px;
 }
 
-.teams{
-    text-align:center;
-    font-size:1.3rem;
-    font-weight:bold;
-    margin-bottom:10px;
+.live-label {
+  color: #ff5c69;
+  font-size: 11px;
+  font-weight: 800;
 }
 
-.score{
-    text-align:center;
-    font-size:2rem;
-    color:#00e5ff;
-    font-weight:bold;
+.live-label:before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #ff4658;
+  border-radius: 50%;
+  margin-right: 7px;
 }
 
-.date{
-    text-align:center;
-    color:#bbb;
-    margin-top:10px;
+/* FILTERS */
+
+.filters {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
 }
 
-/* LIVE TICKER */
-.ticker{
-    background:#00e5ff;
-    color:#000;
-    padding:12px;
-    font-weight:bold;
-    overflow:hidden;
-    white-space:nowrap;
+.filter {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.ticker span{
-    display:inline-block;
-    padding-left:100%;
-    animation:scroll 25s linear infinite;
+.filter.active {
+  color: #101a0a;
+  background: var(--green);
+  border-color: var(--green);
 }
 
-@keyframes scroll{
-    from{transform:translateX(0);}
-    to{transform:translateX(-100%);}
+/* SEARCH */
+
+.search {
+  width: 100%;
+  padding: 14px 17px;
+  margin-bottom: 22px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: white;
+  border-radius: 7px;
+  outline: none;
 }
+
+.search:focus { border-color: var(--green); }
+
+/* MATCH CARDS */
+
+.matches {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 15px;
+}
+
+.match {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: .2s;
+}
+
+.match:hover {
+  transform: translateY(-3px);
+  border-color: #8cbb45;
+}
+
+.match-top {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+  margin-bottom: 22px;
+}
+
+.status {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.status.finished { color: #8997ad; }
+.status.live { color: #ff5c69; }
+
+.teams {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: center;
+  text-align: center;
+}
+
+.team {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.flag {
+  display: block;
+  font-size: 29px;
+  margin-bottom: 9px;
+}
+
+.score {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.score small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.match-bottom {
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* TABLE */
+
+.table-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 550px;
+  text-align: left;
+}
+
+th, td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+th {
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+td:first-child { color: var(--green); font-weight: 800; }
+
+.team-name { font-weight: 700; }
 
 /* FOOTER */
-footer{
-    margin-top:60px;
-    text-align:center;
-    padding:30px;
-    background:#081226;
-    color:#aaa;
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
 }
 
-@media(max-width:768px){
+footer span { color: var(--green); }
 
-.hero h1{
-    font-size:2.5rem;
-}
-
-.hero{
-    height:60vh;
-}
-
+@media(max-width:700px) {
+  .nav-links { display: none; }
+  .stats { grid-template-columns: repeat(2,1fr); }
+  .matches { grid-template-columns: 1fr; }
+  .hero { padding: 48px 0; }
+  .hero h1 { letter-spacing: -2px; }
+  .section-heading h2 { font-size: 20px; }
 }
 </style>
 </head>
+
 <body>
 
-<div class="hero">
-    <h1>⚽ FIFA World Cup 2026</h1>
-    <p>Matches, Results & Upcoming Fixtures</p>
-    <button onclick="document.getElementById('results').scrollIntoView()">
-        View Matches
-    </button>
-</div>
+<header>
+  <div class="container nav">
+    <div class="logo">UEFA<span>26</span></div>
 
-<nav>
-    <a href="#results">Results</a>
-    <a href="#fixtures">Fixtures</a>
-    <a href="#about">Tournament</a>
-</nav>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#matches">Matches</a>
+      <a href="#results">Results</a>
+      <a href="#standings">Standings</a>
+    </nav>
 
-<div class="ticker">
-    <span>
-        ⚽ Netherlands vs Sweden • Germany vs Ivory Coast • Spain vs Saudi Arabia • Belgium vs Iran • France vs Iraq • Argentina vs Austria
-    </span>
-</div>
+    <div class="season">SEASON 2026/27</div>
+  </div>
+</header>
 
-<div class="container">
+<!-- HERO -->
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">THE HOME OF EUROPEAN FOOTBALL</div>
+
+      <h1>THE BEAUTIFUL<br>GAME. <span>ONE HOME.</span></h1>
+
+      <p>
+        Follow European football with the latest fixtures,
+        match results, scores and competition updates.
+        Every match. Every moment.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#matches" class="btn btn-primary">EXPLORE MATCHES ↗</a>
+        <a href="#results" class="btn btn-secondary">VIEW RESULTS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+
+<!-- STATISTICS -->
+
+<section class="stats">
+  <div class="stat">
+    <small>COMPETITIONS</small>
+    <h2>03<span>+</span></h2>
+  </div>
+  <div class="stat">
+    <small>DEMO MATCHES</small>
+    <h2 id="totalMatches">06</h2>
+  </div>
+  <div class="stat">
+    <small>COMPLETED</small>
+    <h2>04</h2>
+  </div>
+  <div class="stat">
+    <small>UPCOMING</small>
+    <h2>02</h2>
+  </div>
+</section>
+
+<!-- MATCHES -->
+
+<section class="section" id="matches">
+
+  <div class="section-heading">
+    <div>
+      <h2>Match Center</h2>
+      <p>Fixtures, scores and match information</p>
+    </div>
+    <span class="live-label">MATCH TRACKER</span>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-filter="All">All Matches</button>
+    <button class="filter" data-filter="Champions League">Champions League</button>
+    <button class="filter" data-filter="Europa League">Europa League</button>
+    <button class="filter" data-filter="Conference League">Conference League</button>
+  </div>
+
+  <input
+    class="search"
+    id="search"
+    type="text"
+    placeholder="Search clubs or competitions..."
+  >
+
+  <div class="matches" id="matchList"></div>
+
+</section>
 
 <!-- RESULTS -->
 
-<section id="results">
-<h2 class="section-title">Completed Matches</h2>
+<section class="section" id="results">
+  <div class="section-heading">
+    <div>
+      <h2>Latest Results</h2>
+      <p>Completed demo fixtures</p>
+    </div>
+  </div>
 
-<div class="matches">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200" alt="">
-<div class="content">
-<span class="badge final">FINAL</span>
-<div class="teams">🇲🇽 Mexico vs South Africa 🇿🇦</div>
-<div class="score">2 - 0</div>
-<div class="date">11 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200" alt="">
-<div class="content">
-<span class="badge final">FINAL</span>
-<div class="teams">🇺🇸 USA vs Paraguay 🇵🇾</div>
-<div class="score">4 - 1</div>
-<div class="date">12 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200" alt="">
-<div class="content">
-<span class="badge final">FINAL</span>
-<div class="teams">🇧🇷 Brazil vs Haiti 🇭🇹</div>
-<div class="score">3 - 0</div>
-<div class="date">19 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200" alt="">
-<div class="content">
-<span class="badge final">FINAL</span>
-<div class="teams">🇦🇷 Argentina vs Algeria 🇩🇿</div>
-<div class="score">3 - 0</div>
-<div class="date">16 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200" alt="">
-<div class="content">
-<span class="badge final">FINAL</span>
-<div class="teams">🏴 England vs Croatia 🇭🇷</div>
-<div class="score">4 - 2</div>
-<div class="date">17 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1486286701208-1d58e9338013?w=1200" alt="">
-<div class="content">
-<span class="badge final">FINAL</span>
-<div class="teams">🇩🇪 Germany vs Curacao 🇨🇼</div>
-<div class="score">7 - 1</div>
-<div class="date">14 June 2026</div>
-</div>
-</div>
-
-</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Home</th>
+          <th>Score</th>
+          <th>Away</th>
+          <th>Competition</th>
+        </tr>
+      </thead>
+      <tbody id="resultList"></tbody>
+    </table>
+  </div>
 </section>
 
-<br><br>
+<!-- STANDINGS -->
 
-<!-- FIXTURES -->
+<section class="section" id="standings">
+  <div class="section-heading">
+    <div>
+      <h2>League Standings</h2>
+      <p>Example competition table</p>
+    </div>
+  </div>
 
-<section id="fixtures">
-<h2 class="section-title">Upcoming Fixtures</h2>
-
-<div class="matches">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200" alt="">
-<div class="content">
-<span class="badge upcoming">UPCOMING</span>
-<div class="teams">🇳🇱 Netherlands vs Sweden 🇸🇪</div>
-<div class="score">VS</div>
-<div class="date">20 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200" alt="">
-<div class="content">
-<span class="badge upcoming">UPCOMING</span>
-<div class="teams">🇩🇪 Germany vs Ivory Coast 🇨🇮</div>
-<div class="score">VS</div>
-<div class="date">20 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=1200" alt="">
-<div class="content">
-<span class="badge upcoming">UPCOMING</span>
-<div class="teams">🇪🇸 Spain vs Saudi Arabia 🇸🇦</div>
-<div class="score">VS</div>
-<div class="date">21 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200" alt="">
-<div class="content">
-<span class="badge upcoming">UPCOMING</span>
-<div class="teams">🇧🇪 Belgium vs Iran 🇮🇷</div>
-<div class="score">VS</div>
-<div class="date">21 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200" alt="">
-<div class="content">
-<span class="badge upcoming">UPCOMING</span>
-<div class="teams">🇫🇷 France vs Iraq 🇮🇶</div>
-<div class="score">VS</div>
-<div class="date">22 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200" alt="">
-<div class="content">
-<span class="badge upcoming">UPCOMING</span>
-<div class="teams">🇦🇷 Argentina vs Austria 🇦🇹</div>
-<div class="score">VS</div>
-<div class="date">22 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200" alt="">
-<div class="content">
-<span class="badge upcoming">UPCOMING</span>
-<div class="teams">🏴 England vs Ghana 🇬🇭</div>
-<div class="score">VS</div>
-<div class="date">23 June 2026</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200" alt="">
-<div class="content">
-<span class="badge upcoming">UPCOMING</span>
-<div class="teams">🇵🇹 Portugal vs Uzbekistan 🇺🇿</div>
-<div class="score">VS</div>
-<div class="date">23 June 2026</div>
-</div>
-</div>
-
-</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Club</th>
+          <th>Played</th>
+          <th>Won</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>01</td><td class="team-name">Real Madrid</td><td>6</td><td>5</td><td>15</td></tr>
+        <tr><td>02</td><td class="team-name">Manchester City</td><td>6</td><td>4</td><td>13</td></tr>
+        <tr><td>03</td><td class="team-name">Bayern Munich</td><td>6</td><td>4</td><td>12</td></tr>
+        <tr><td>04</td><td class="team-name">Barcelona</td><td>6</td><td>3</td><td>10</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<br><br>
-
-<section id="about">
-<h2 class="section-title">Tournament Info</h2>
-
-<div style="
-background:rgba(255,255,255,.05);
-padding:25px;
-border-radius:20px;
-line-height:1.8;">
-<p>
-🏆 FIFA World Cup 2026 will be hosted across the United States, Canada, and Mexico.
-The tournament features 48 teams competing for football's most prestigious trophy.
-</p>
-</div>
-</section>
-
-</div>
+</main>
 
 <footer>
-    © 2026 FIFA World Cup Fan Portal
+  <div class="container">
+    <div class="logo">UEFA<span>26</span></div>
+    <p style="margin-top:12px">
+      European Football Dashboard · 2026/27
+    </p>
+    <p style="margin-top:8px">
+      Unofficial fan-made demo. Not affiliated with UEFA.
+    </p>
+  </div>
 </footer>
+
+<script>
+
+// DEMO DATA — Replace with verified match data or a live API.
+
+const matches = [
+  {
+    home:"Real Madrid", away:"Liverpool",
+    homeFlag:"🇪🇸", awayFlag:"🏴",
+    homeScore:2, awayScore:1,
+    date:"04 Nov 2026", time:"20:00",
+    competition:"Champions League",
+    status:"Finished"
+  },
+  {
+    home:"Barcelona", away:"Bayern Munich",
+    homeFlag:"🇪🇸", awayFlag:"🇩🇪",
+    homeScore:3, awayScore:2,
+    date:"04 Nov 2026", time:"20:00",
+    competition:"Champions League",
+    status:"Finished"
+  },
+  {
+    home:"Arsenal", away:"AC Milan",
+    homeFlag:"🏴", awayFlag:"🇮🇹",
+    homeScore:null, awayScore:null,
+    date:"05 Nov 2026", time:"20:00",
+    competition:"Europa League",
+    status:"Upcoming"
+  },
+  {
+    home:"Roma", away:"Ajax",
+    homeFlag:"🇮🇹", awayFlag:"🇳🇱",
+    homeScore:1, awayScore:1,
+    date:"03 Nov 2026", time:"18:45",
+    competition:"Europa League",
+    status:"Finished"
+  },
+  {
+    home:"Chelsea", away:"Dortmund",
+    homeFlag:"🏴", awayFlag:"🇩🇪",
+    homeScore:null, awayScore:null,
+    date:"06 Nov 2026", time:"21:00",
+    competition:"Conference League",
+    status:"Upcoming"
+  },
+  {
+    home:"PSG", away:"Inter",
+    homeFlag:"🇫🇷", awayFlag:"🇮🇹",
+    homeScore:2, awayScore:0,
+    date:"02 Nov 2026", time:"20:00",
+    competition:"Champions League",
+    status:"Finished"
+  }
+];
+
+let activeFilter = "All";
+
+const matchList = document.getElementById("matchList");
+const resultList = document.getElementById("resultList");
+const search = document.getElementById("search");
+
+function renderMatches() {
+  const term = search.value.toLowerCase();
+
+  const filtered = matches.filter(match => {
+    const category = activeFilter === "All" ||
+      match.competition === activeFilter;
+
+    const keyword =
+      match.home.toLowerCase().includes(term) ||
+      match.away.toLowerCase().includes(term) ||
+      match.competition.toLowerCase().includes(term);
+
+    return category && keyword;
+  });
+
+  matchList.innerHTML = filtered.map(match => {
+
+    const finished = match.status === "Finished";
+    const statusClass = finished ? "finished" :
+      match.status === "Live" ? "live" : "";
+
+    const score = finished
+      ? `${match.homeScore} - ${match.awayScore}`
+      : match.status === "Live"
+        ? `${match.homeScore} - ${match.awayScore}`
+        : "VS";
+
+    return `
+      <article class="match">
+        <div class="match-top">
+          <span>${match.competition}</span>
+          <span class="status ${statusClass}">
+            ${match.status.toUpperCase()}
+          </span>
+        </div>
+
+        <div class="teams">
+          <div class="team">
+            <span class="flag">${match.homeFlag}</span>
+            ${match.home}
+          </div>
+
+          <div class="score">
+            ${score}
+          </div>
+
+          <div class="team">
+            <span class="flag">${match.awayFlag}</span>
+            ${match.away}
+          </div>
+        </div>
+
+        <div class="match-bottom">
+          <span>${match.date}</span>
+          <span>${match.time}</span>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  if (!filtered.length) {
+    matchList.innerHTML =
+      '<p style="color:#8997ad">No matches found.</p>';
+  }
+}
+
+function renderResults() {
+  resultList.innerHTML = matches
+    .filter(match => match.status === "Finished")
+    .map(match => `
+      <tr>
+        <td>${match.date}</td>
+        <td class="team-name">${match.home}</td>
+        <td><strong>${match.homeScore} - ${match.awayScore}</strong></td>
+        <td class="team-name">${match.away}</td>
+        <td>${match.competition}</td>
+      </tr>
+    `).join("");
+}
+
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter")
+      .forEach(item => item.classList.remove("active"));
+
+    button.classList.add("active");
+    activeFilter = button.dataset.filter;
+    renderMatches();
+  });
+});
+
+search.addEventListener("input", renderMatches);
+
+renderMatches();
+renderResults();
+
+</script>
 
 </body>
 </html>
