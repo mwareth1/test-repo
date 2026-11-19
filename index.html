@@ -1,715 +1,161 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UEFA 2026 | Football Center</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+<meta name="theme-color" content="#07152e">
+<meta name="description" content="The home of European football. Explore competitions, fixtures, results and the latest football stories.">
+<title>UEFA | The Home of European Football</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-:root {
-  --bg: #080e1b;
-  --panel: #111b2d;
-  --panel2: #17243a;
-  --green: #b7ff48;
-  --text: #f5f7fb;
-  --muted: #8997ad;
-  --border: rgba(255,255,255,.08);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-}
-
-a { color: inherit; text-decoration: none; }
-
-.container {
-  width: min(1200px, 92%);
-  margin: auto;
-}
-
-/* HEADER */
-
-header {
-  height: 76px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  background: #0a1221;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: -1px;
-}
-
-.logo span { color: var(--green); }
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.nav-links a:hover { color: var(--green); }
-
-.season {
-  background: #1a293e;
-  padding: 9px 15px;
-  border-radius: 20px;
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* HERO */
-
-.hero {
-  padding: 65px 0 50px;
-  background:
-    radial-gradient(ellipse at 85% 20%, #25422c 0%, transparent 38%),
-    linear-gradient(120deg, #101e32, #080e1b);
-}
-
-.hero-content {
-  max-width: 720px;
-}
-
-.eyebrow {
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: clamp(38px, 6vw, 67px);
-  line-height: 1.05;
-  letter-spacing: -3px;
-  font-weight: 900;
-}
-
-.hero h1 span { color: var(--green); }
-
-.hero p {
-  margin-top: 20px;
-  color: #a5b2c5;
-  line-height: 1.8;
-  font-size: 14px;
-  max-width: 530px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.btn {
-  padding: 13px 22px;
-  border-radius: 7px;
-  font-weight: 800;
-  font-size: 12px;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--green);
-  color: #101a0a;
-}
-
-.btn-secondary {
-  background: #243249;
-  color: white;
-}
-
-/* STATS */
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 15px;
-  margin: 30px auto;
-}
-
-.stat {
-  background: var(--panel);
-  padding: 22px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.stat small {
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.stat h2 {
-  font-size: 29px;
-  margin-top: 10px;
-  letter-spacing: -1px;
-}
-
-.stat h2 span {
-  color: var(--green);
-}
-
-/* SECTION */
-
-.section {
-  padding: 25px 0 50px;
-}
-
-.section-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
-}
-
-.section-heading h2 {
-  font-size: 23px;
-  font-weight: 800;
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 11px;
-  margin-top: 7px;
-}
-
-.live-label {
-  color: #ff5c69;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.live-label:before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  background: #ff4658;
-  border-radius: 50%;
-  margin-right: 7px;
-}
-
-/* FILTERS */
-
-.filters {
-  display: flex;
-  gap: 9px;
-  flex-wrap: wrap;
-  margin-bottom: 18px;
-}
-
-.filter {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.filter.active {
-  color: #101a0a;
-  background: var(--green);
-  border-color: var(--green);
-}
-
-/* SEARCH */
-
-.search {
-  width: 100%;
-  padding: 14px 17px;
-  margin-bottom: 22px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  color: white;
-  border-radius: 7px;
-  outline: none;
-}
-
-.search:focus { border-color: var(--green); }
-
-/* MATCH CARDS */
-
-.matches {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 15px;
-}
-
-.match {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  transition: .2s;
-}
-
-.match:hover {
-  transform: translateY(-3px);
-  border-color: #8cbb45;
-}
-
-.match-top {
-  display: flex;
-  justify-content: space-between;
-  color: var(--muted);
-  font-size: 10px;
-  margin-bottom: 22px;
-}
-
-.status {
-  color: var(--green);
-  font-weight: 800;
-}
-
-.status.finished { color: #8997ad; }
-.status.live { color: #ff5c69; }
-
-.teams {
-  display: grid;
-  grid-template-columns: 1fr 80px 1fr;
-  align-items: center;
-  text-align: center;
-}
-
-.team {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.flag {
-  display: block;
-  font-size: 29px;
-  margin-bottom: 9px;
-}
-
-.score {
-  font-size: 25px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.score small {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.match-bottom {
-  border-top: 1px solid var(--border);
-  margin-top: 20px;
-  padding-top: 14px;
-  display: flex;
-  justify-content: space-between;
-  color: var(--muted);
-  font-size: 10px;
-}
-
-/* TABLE */
-
-.table-wrap {
-  overflow-x: auto;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 550px;
-  text-align: left;
-}
-
-th, td {
-  padding: 16px;
-  border-bottom: 1px solid var(--border);
-  font-size: 12px;
-}
-
-th {
-  color: var(--muted);
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-td:first-child { color: var(--green); font-weight: 800; }
-
-.team-name { font-weight: 700; }
-
-/* FOOTER */
-
-footer {
-  border-top: 1px solid var(--border);
-  padding: 30px 0;
-  color: var(--muted);
-  font-size: 11px;
-  text-align: center;
-}
-
-footer span { color: var(--green); }
-
-@media(max-width:700px) {
-  .nav-links { display: none; }
-  .stats { grid-template-columns: repeat(2,1fr); }
-  .matches { grid-template-columns: 1fr; }
-  .hero { padding: 48px 0; }
-  .hero h1 { letter-spacing: -2px; }
-  .section-heading h2 { font-size: 20px; }
-}
+:root{--navy:#07152e;--navy2:#0b2144;--blue:#123b75;--gold:#d8b66a;--gold2:#f0d99c;--ink:#101b2d;--muted:#748096;--paper:#f3f5f8;--card:#fff;--line:#e5e9f0;--shadow:0 16px 45px rgba(5,20,45,.10);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;transition:background .25s,color .25s}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.topline{height:4px;background:linear-gradient(90deg,var(--gold),#fff0bd,var(--gold))}
+header{position:sticky;top:0;z-index:50;background:rgba(7,21,46,.97);backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
+.header-inner{height:76px;max-width:1240px;margin:auto;padding:0 24px;display:flex;align-items:center;gap:34px}.brand{display:flex;align-items:center;gap:11px;min-width:max-content}.brand-mark{width:43px;height:43px;border:1.5px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:19px;position:relative}.brand-mark:after{content:"";position:absolute;inset:5px;border:1px solid rgba(216,182,106,.45);border-radius:50%}.brand-copy strong{font-family:"Barlow Condensed";font-size:24px;letter-spacing:2px;line-height:1;display:block}.brand-copy small{font-size:8px;letter-spacing:2px;color:var(--gold);font-weight:700}
+nav{display:flex;align-items:center;gap:23px;flex:1;height:100%}nav a{font-size:11px;font-weight:700;letter-spacing:.55px;text-transform:uppercase;color:#c8d0df;white-space:nowrap;height:100%;display:flex;align-items:center;position:relative;transition:.2s}nav a:hover,nav a.active{color:#fff}nav a.active:after,nav a:hover:after{content:"";height:2px;background:var(--gold);position:absolute;bottom:0;left:0;right:0}
+.header-actions{display:flex;align-items:center;gap:10px}.icon-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:transparent;color:white;display:grid;place-items:center;transition:.2s}.icon-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}.menu-toggle{display:none}
+.hero{background:radial-gradient(ellipse at 75% 30%,rgba(30,85,150,.65),transparent 42%),linear-gradient(110deg,#06132b 5%,#0b2851 68%,#102f5a);color:#fff;position:relative;overflow:hidden;min-height:510px}.hero:before{content:"";position:absolute;width:600px;height:600px;border:1px solid rgba(216,182,106,.16);border-radius:50%;right:-120px;top:-190px;box-shadow:0 0 0 35px rgba(216,182,106,.025),0 0 0 80px rgba(216,182,106,.025),0 0 0 130px rgba(216,182,106,.02)}.hero:after{content:"✦";position:absolute;font-size:380px;color:rgba(255,255,255,.025);right:12%;top:20px;transform:rotate(12deg)}
+.hero-inner{max-width:1240px;margin:auto;padding:72px 24px 66px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:50px;position:relative;z-index:1}.eyebrow{color:var(--gold);font-size:10px;letter-spacing:2.5px;font-weight:800;text-transform:uppercase;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:26px;height:1px;background:var(--gold)}h1,h2,h3,p{margin-top:0}.hero h1{font:800 clamp(48px,6vw,76px)/.93 "Barlow Condensed";letter-spacing:-1px;text-transform:uppercase;margin:19px 0 20px;max-width:590px}.hero h1 span{color:var(--gold)}.hero-copy{color:#b9c7dc;line-height:1.8;font-size:14px;max-width:490px}.hero-buttons{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}.btn{border:0;border-radius:5px;padding:14px 20px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;transition:.25s}.btn-gold{background:var(--gold);color:#081831}.btn-gold:hover{background:var(--gold2);transform:translateY(-3px);box-shadow:0 10px 24px #0004}.btn-outline{border:1px solid #8293ad;color:white;background:transparent}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-visual{display:flex;justify-content:center;align-items:center;min-height:330px;position:relative}.orbit{width:min(370px,80vw);aspect-ratio:1;border:1px solid rgba(216,182,106,.42);border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:0 0 80px rgba(35,102,180,.2),inset 0 0 70px rgba(35,102,180,.15)}.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(216,182,106,.2);border-radius:50%;inset:22px}.orbit:after{inset:48px;border-style:dashed}.ball{width:180px;height:180px;border-radius:50%;display:grid;place-items:center;font-size:128px;color:#fff;text-shadow:0 12px 30px #0008;filter:drop-shadow(0 18px 25px #0008);animation:float 5s ease-in-out infinite}.orbit-label{position:absolute;bottom:20px;background:var(--gold);color:#091a35;padding:9px 15px;font-size:9px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase;border-radius:2px}@keyframes float{50%{transform:translateY(-13px) rotate(8deg)}}
+.section{max-width:1240px;margin:auto;padding:66px 24px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}.section-kicker{font-size:9px;color:#a17c34;letter-spacing:2px;font-weight:800;text-transform:uppercase;margin-bottom:8px}.section-title{font:800 35px/.95 "Barlow Condensed";text-transform:uppercase;color:var(--navy);margin:0}.section-title span{color:#b18b45}.view-link{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:#31527e;white-space:nowrap}.view-link i{margin-left:8px;color:#b18b45}
+.feature-match{background:linear-gradient(115deg,#0b2144,#102f5b);color:white;border-radius:var(--radius);padding:28px 34px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}.feature-match:after{content:"";position:absolute;width:300px;height:300px;border:1px solid #ffffff12;border-radius:50%;left:calc(50% - 150px);top:-130px;pointer-events:none}.match-side{display:flex;align-items:center;gap:17px;min-width:0}.match-side.away{justify-content:flex-end;text-align:right}.team-crest{width:65px;height:65px;display:grid;place-items:center;border-radius:50%;background:#ffffff12;border:1px solid #ffffff20;font-size:36px;flex-shrink:0}.team-name{font:700 22px "Barlow Condensed";text-transform:uppercase}.team-sub{font-size:9px;color:#aebbd0;letter-spacing:1px;margin-top:4px}.match-center{text-align:center;position:relative;z-index:1;min-width:150px}.live-pill{display:inline-flex;align-items:center;gap:6px;background:#ffffff13;border:1px solid #ffffff24;border-radius:30px;padding:6px 10px;font-size:8px;font-weight:800;letter-spacing:1px;color:var(--gold);text-transform:uppercase}.live-pill:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px #d8b66a22}.versus{font:800 38px "Barlow Condensed";margin:9px 0 3px}.match-meta{font-size:9px;color:#aebbd0;line-height:1.8}.match-meta strong{color:#fff}
+.grid{display:grid;gap:18px}.news-grid{grid-template-columns:1.35fr 1fr 1fr}.news-card,.fixture-card,.result-card,.competition-card,.standing-card{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}.news-card:hover,.fixture-card:hover,.result-card:hover,.competition-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#d4bd8a}.news-image{height:170px;position:relative;overflow:hidden;background:linear-gradient(135deg,#153965,#07152e);display:grid;place-items:center}.news-image img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.news-card:hover .news-image img{transform:scale(1.06)}.news-image .image-symbol{font-size:65px;color:#ffffffbd;text-shadow:0 10px 20px #0007}.news-card.featured .news-image{height:230px}.news-content{padding:18px}.tag{font-size:8px;letter-spacing:1.3px;text-transform:uppercase;color:#a17c34;font-weight:900}.news-content h3{font:700 22px/1.08 "Barlow Condensed";text-transform:uppercase;margin:10px 0;color:var(--navy)}.news-card:not(.featured) h3{font-size:19px}.news-content p{font-size:11px;line-height:1.7;color:var(--muted);margin-bottom:14px}.news-foot{display:flex;justify-content:space-between;align-items:center;font-size:9px;color:#8993a3}.read-more{border:0;background:none;color:#a17c34;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;padding:0}.read-more:hover{color:var(--navy)}
+.two-col{display:grid;grid-template-columns:1.5fr .85fr;gap:26px}.fixtures-list{display:grid;gap:10px}.fixture-card{padding:15px 17px;display:grid;grid-template-columns:76px 1fr 72px;align-items:center;gap:12px}.fixture-date{font-size:9px;color:var(--muted);line-height:1.7;text-transform:uppercase}.fixture-date strong{display:block;color:var(--navy);font-size:11px}.fixture-teams{display:grid;gap:8px}.mini-team{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700}.mini-team .crest{font-size:17px;width:22px;text-align:center}.fixture-time{text-align:right;font-size:10px;font-weight:800;color:#34557f}.fixture-time small{display:block;font-size:8px;color:#98a1af;font-weight:600;margin-top:4px}.result-score{font:800 23px "Barlow Condensed";color:var(--navy);text-align:right}.result-score small{display:block;font:700 8px Inter;color:#8993a3;letter-spacing:.8px}
+.standing-card{padding:19px}.standing-card h3{font:700 20px "Barlow Condensed";text-transform:uppercase;color:var(--navy);margin:0 0 15px}.table-row{display:grid;grid-template-columns:22px 1fr 28px 28px;gap:7px;padding:10px 0;border-bottom:1px solid var(--line);font-size:10px;align-items:center}.table-row:last-child{border:0}.table-row.head{font-size:8px;color:#99a2b0;text-transform:uppercase;font-weight:800;padding-top:0}.table-row .rank{color:#9ba4b2}.table-row .club{font-weight:700;color:#27364c}.table-row .pts{text-align:right;font-weight:800;color:var(--navy)}
+.competition-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}.competition-card{min-height:205px;padding:22px 17px;position:relative;background:linear-gradient(145deg,#102b53,#07152e);color:white;display:flex;flex-direction:column;justify-content:space-between}.competition-card:after{content:"";position:absolute;width:150px;height:150px;border:1px solid #d8b66a35;border-radius:50%;right:-65px;top:-60px;box-shadow:0 0 0 18px #d8b66a0a,0 0 0 38px #d8b66a08}.competition-icon{font-size:40px;color:var(--gold);position:relative;z-index:1}.competition-card h3{font:700 20px/1 "Barlow Condensed";text-transform:uppercase;margin:20px 0 6px;position:relative;z-index:1}.competition-card p{font-size:9px;color:#aebbd0;line-height:1.6;margin:0;position:relative;z-index:1}.competition-card .arrow{position:absolute;right:17px;bottom:18px;color:var(--gold);font-size:13px}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter-btn{border:1px solid var(--line);background:var(--card);color:#657186;border-radius:30px;padding:9px 14px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.7px}.filter-btn.active,.filter-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.newsletter{background:linear-gradient(110deg,#0a1d3b,#123c70);border-radius:var(--radius);padding:35px 40px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:25px;overflow:hidden;position:relative}.newsletter:after{content:"✦";font-size:220px;position:absolute;right:28%;top:-90px;color:#ffffff08}.newsletter h2{font:800 32px "Barlow Condensed";text-transform:uppercase;margin:0 0 7px}.newsletter p{font-size:11px;color:#b7c5d9;margin:0}.subscribe{display:flex;gap:8px;position:relative;z-index:1;min-width:340px}.subscribe input{min-width:0;flex:1;border:1px solid #ffffff35;background:#ffffff10;color:white;padding:13px 14px;border-radius:4px;outline:none;font-size:11px}.subscribe input::placeholder{color:#aab8cc}.subscribe button{background:var(--gold);border:0;border-radius:4px;padding:0 17px;font-size:9px;font-weight:900;text-transform:uppercase}
+footer{background:#061229;color:#aab6c8;padding:42px 24px 22px}.footer-inner{max-width:1240px;margin:auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.footer-brand{color:white}.footer-copy{font-size:10px;line-height:1.8;max-width:330px;margin-top:13px}.footer-links{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:9px;text-transform:uppercase;font-weight:800}.footer-links a:hover{color:var(--gold)}.copyright{max-width:1240px;margin:30px auto 0;border-top:1px solid #ffffff18;padding-top:18px;font-size:9px;color:#78869c;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.modal-backdrop{position:fixed;inset:0;background:#020917c9;z-index:100;display:none;place-items:center;padding:20px}.modal-backdrop.open{display:grid}.modal{width:min(560px,100%);background:var(--card);color:var(--ink);border-radius:16px;padding:28px;box-shadow:0 25px 80px #0005;position:relative;animation:pop .2s ease}.modal-close{position:absolute;right:17px;top:15px;border:0;background:none;font-size:20px;color:var(--muted)}.modal h2{font:800 30px "Barlow Condensed";text-transform:uppercase;color:var(--navy);margin:12px 0}.modal p{font-size:12px;color:var(--muted);line-height:1.8}.modal-score{font:800 42px "Barlow Condensed";color:var(--navy);text-align:center;padding:15px}.search-panel{position:fixed;inset:0;background:#061229f5;z-index:90;display:none;align-items:flex-start;justify-content:center;padding:15vh 20px}.search-panel.open{display:flex}.search-box{width:min(650px,100%);position:relative}.search-box input{width:100%;background:transparent;border:0;border-bottom:2px solid var(--gold);padding:18px 48px 18px 5px;color:#fff;font:600 27px "Barlow Condensed";outline:0}.search-box button{position:absolute;right:0;top:20px;background:none;border:0;color:var(--gold);font-size:20px}.search-hint{color:#94a4bd;font-size:10px;margin:14px 4px}
+body.light{--paper:#e9edf3;--card:#fff;--ink:#101b2d}body.light header{background:rgba(7,21,46,.97)}
+.empty-state{padding:25px;text-align:center;color:var(--muted);font-size:12px;background:var(--card);border-radius:12px}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:1050px){nav{gap:13px}nav a{font-size:9px}.header-inner{gap:20px}.competition-strip{grid-template-columns:repeat(3,1fr)}.two-col{grid-template-columns:1.2fr .8fr}}
+@media(max-width:780px){.header-inner{height:68px;padding:0 18px;justify-content:space-between}.menu-toggle{display:grid}nav{display:none;position:absolute;top:68px;left:0;right:0;height:auto;background:#07152e;padding:10px 22px 20px;align-items:stretch;gap:0;box-shadow:0 15px 25px #0003}nav.open{display:flex;flex-direction:column}nav a{height:auto;padding:13px 0;border-bottom:1px solid #ffffff12;font-size:11px}nav a:after{display:none!important}.header-actions{margin-left:auto}.hero-inner{grid-template-columns:1fr;padding:58px 22px 45px;gap:5px}.hero-visual{min-height:250px}.orbit{width:245px}.ball{font-size:90px}.hero h1{font-size:60px}.section{padding:48px 18px}.feature-match{padding:23px 16px;gap:8px}.team-crest{width:48px;height:48px;font-size:27px}.team-name{font-size:17px}.match-center{min-width:90px}.versus{font-size:29px}.two-col{grid-template-columns:1fr}.news-grid{grid-template-columns:1fr 1fr}.news-card.featured{grid-column:span 2}.newsletter{padding:28px;display:block}.subscribe{margin-top:20px;min-width:0}.footer-inner{display:block}.footer-links{margin-top:25px}}
+@media(max-width:480px){.brand-copy strong{font-size:21px}.brand-mark{width:38px;height:38px}.header-actions{gap:6px}.icon-btn{width:34px;height:34px}.hero h1{font-size:51px}.hero-copy{font-size:12px}.section-title{font-size:30px}.section-head{align-items:center}.feature-match{grid-template-columns:1fr auto 1fr;padding:18px 10px}.match-side{gap:7px;flex-direction:column;text-align:center!important}.match-side.away{flex-direction:column}.team-crest{width:43px;height:43px}.team-name{font-size:14px}.team-sub{font-size:7px}.match-center{min-width:72px}.versus{font-size:25px}.match-meta{font-size:8px}.news-grid{grid-template-columns:1fr}.news-card.featured{grid-column:auto}.competition-strip{grid-template-columns:1fr 1fr}.competition-card{min-height:175px;padding:17px 13px}.competition-card h3{font-size:18px}.fixture-card{grid-template-columns:60px 1fr 54px;padding:13px 11px}.fixture-date{font-size:8px}.fixture-time{font-size:9px}.newsletter h2{font-size:27px}.subscribe button{padding:0 11px}.subscribe input{width:100px}}
 </style>
 </head>
-
 <body>
-
+<div class="topline"></div>
 <header>
-  <div class="container nav">
-    <div class="logo">UEFA<span>26</span></div>
-
-    <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#matches">Matches</a>
-      <a href="#results">Results</a>
-      <a href="#standings">Standings</a>
+  <div class="header-inner">
+    <a class="brand" href="#home" aria-label="UEFA home"><span class="brand-mark"><i class="fa-solid fa-star"></i></span><span class="brand-copy"><strong>UEFA</strong><small>THE HOME OF FOOTBALL</small></span></a>
+    <nav id="mainNav" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a><a href="#competitions">Competitions</a><a href="#champions">Champions League</a><a href="#competitions">Europa League</a><a href="#competitions">Conference League</a><a href="#national">National Teams</a><a href="#news">News</a>
     </nav>
-
-    <div class="season">SEASON 2026/27</div>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchOpen" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle light mode"><i class="fa-regular fa-sun"></i></button>
+      <button class="icon-btn" aria-label="User profile" id="profileBtn"><i class="fa-regular fa-user"></i></button>
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
   </div>
 </header>
 
-<!-- HERO -->
-
-<section class="hero" id="home">
-  <div class="container">
-    <div class="hero-content">
-      <div class="eyebrow">THE HOME OF EUROPEAN FOOTBALL</div>
-
-      <h1>THE BEAUTIFUL<br>GAME. <span>ONE HOME.</span></h1>
-
-      <p>
-        Follow European football with the latest fixtures,
-        match results, scores and competition updates.
-        Every match. Every moment.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#matches" class="btn btn-primary">EXPLORE MATCHES ↗</a>
-        <a href="#results" class="btn btn-secondary">VIEW RESULTS</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<main class="container">
-
-<!-- STATISTICS -->
-
-<section class="stats">
-  <div class="stat">
-    <small>COMPETITIONS</small>
-    <h2>03<span>+</span></h2>
-  </div>
-  <div class="stat">
-    <small>DEMO MATCHES</small>
-    <h2 id="totalMatches">06</h2>
-  </div>
-  <div class="stat">
-    <small>COMPLETED</small>
-    <h2>04</h2>
-  </div>
-  <div class="stat">
-    <small>UPCOMING</small>
-    <h2>02</h2>
-  </div>
-</section>
-
-<!-- MATCHES -->
-
-<section class="section" id="matches">
-
-  <div class="section-heading">
+<main id="home">
+<section class="hero">
+  <div class="hero-inner">
     <div>
-      <h2>Match Center</h2>
-      <p>Fixtures, scores and match information</p>
+      <div class="eyebrow">The pinnacle of club football</div>
+      <h1>Where legends<br>are <span>made.</span></h1>
+      <p class="hero-copy">The drama. The passion. The unforgettable nights. Follow Europe's elite clubs as they chase the most coveted prize in football.</p>
+      <div class="hero-buttons"><a class="btn btn-gold" href="#champions">Explore Champions League <i class="fa-solid fa-arrow-right"></i></a><a class="btn btn-outline" href="#fixtures">View fixtures</a></div>
     </div>
-    <span class="live-label">MATCH TRACKER</span>
-  </div>
-
-  <div class="filters">
-    <button class="filter active" data-filter="All">All Matches</button>
-    <button class="filter" data-filter="Champions League">Champions League</button>
-    <button class="filter" data-filter="Europa League">Europa League</button>
-    <button class="filter" data-filter="Conference League">Conference League</button>
-  </div>
-
-  <input
-    class="search"
-    id="search"
-    type="text"
-    placeholder="Search clubs or competitions..."
-  >
-
-  <div class="matches" id="matchList"></div>
-
-</section>
-
-<!-- RESULTS -->
-
-<section class="section" id="results">
-  <div class="section-heading">
-    <div>
-      <h2>Latest Results</h2>
-      <p>Completed demo fixtures</p>
-    </div>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Home</th>
-          <th>Score</th>
-          <th>Away</th>
-          <th>Competition</th>
-        </tr>
-      </thead>
-      <tbody id="resultList"></tbody>
-    </table>
+    <div class="hero-visual"><div class="orbit"><div class="ball">⚽</div><div class="orbit-label">Road to the final · 2026/27</div></div></div>
   </div>
 </section>
 
-<!-- STANDINGS -->
-
-<section class="section" id="standings">
-  <div class="section-heading">
-    <div>
-      <h2>League Standings</h2>
-      <p>Example competition table</p>
-    </div>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Club</th>
-          <th>Played</th>
-          <th>Won</th>
-          <th>Points</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>01</td><td class="team-name">Real Madrid</td><td>6</td><td>5</td><td>15</td></tr>
-        <tr><td>02</td><td class="team-name">Manchester City</td><td>6</td><td>4</td><td>13</td></tr>
-        <tr><td>03</td><td class="team-name">Bayern Munich</td><td>6</td><td>4</td><td>12</td></tr>
-        <tr><td>04</td><td class="team-name">Barcelona</td><td>6</td><td>3</td><td>10</td></tr>
-      </tbody>
-    </table>
+<section class="section" id="champions">
+  <div class="section-head"><div><div class="section-kicker">Spotlight match</div><h2 class="section-title">The <span>match</span> of the week</h2></div><a class="view-link" href="#fixtures">Match centre <i class="fa-solid fa-arrow-right"></i></a></div>
+  <div class="feature-match" data-match="spotlight">
+    <div class="match-side"><div class="team-crest">⚪</div><div><div class="team-name">Real Madrid</div><div class="team-sub">ESP · HOME</div></div></div>
+    <div class="match-center"><span class="live-pill">Featured fixture</span><div class="versus">VS</div><div class="match-meta"><strong>UEFA Champions League</strong><br>Matchday · 2026/27<br>Kick-off 20:00 CET</div></div>
+    <div class="match-side away"><div><div class="team-name">Manchester City</div><div class="team-sub">ENG · AWAY</div></div><div class="team-crest">🔵</div></div>
   </div>
 </section>
 
+<section class="section" id="news" style="padding-top:10px">
+  <div class="section-head"><div><div class="section-kicker">The latest stories</div><h2 class="section-title">Around <span>the game</span></h2></div><a class="view-link" href="#newsGrid">All news <i class="fa-solid fa-arrow-right"></i></a></div>
+  <div class="grid news-grid" id="newsGrid">
+    <article class="news-card featured"><div class="news-image"><div class="image-symbol"><i class="fa-solid fa-trophy"></i></div></div><div class="news-content"><div class="tag">Champions League · Feature</div><h3>The road to European glory starts here</h3><p>Every campaign brings new stories, rising stars and nights that live long in the memory. Get ready for another unforgettable season.</p><div class="news-foot"><span>19 November 2026 · 5 min read</span><button class="read-more" data-article="The road to European glory starts here">Read story <i class="fa-solid fa-arrow-right"></i></button></div></div></article>
+    <article class="news-card"><div class="news-image" style="background:linear-gradient(135deg,#1c4777,#0a1933)"><div class="image-symbol"><i class="fa-solid fa-futbol"></i></div></div><div class="news-content"><div class="tag">European football</div><h3>Young talents ready to take centre stage</h3><p>A new generation is making its mark across Europe's biggest competitions.</p><div class="news-foot"><span>18 November 2026</span><button class="read-more" data-article="Young talents ready to take centre stage">Read story <i class="fa-solid fa-arrow-right"></i></button></div></div></article>
+    <article class="news-card"><div class="news-image" style="background:linear-gradient(135deg,#6e562c,#17233b)"><div class="image-symbol"><i class="fa-solid fa-flag"></i></div></div><div class="news-content"><div class="tag">National teams</div><h3>International stage: the fixtures to watch</h3><p>Big rivalries and crucial points are on the line in the Nations League.</p><div class="news-foot"><span>17 November 2026</span><button class="read-more" data-article="International stage: the fixtures to watch">Read story <i class="fa-solid fa-arrow-right"></i></button></div></div></article>
+  </div>
+</section>
+
+<section class="section" id="fixtures" style="padding-top:10px">
+  <div class="section-head"><div><div class="section-kicker">Don't miss a moment</div><h2 class="section-title">Fixtures & <span>results</span></h2></div><a class="view-link" href="#match-centre">Full match centre <i class="fa-solid fa-arrow-right"></i></a></div>
+  <div class="filter-bar" id="filters">
+    <button class="filter-btn active" data-filter="all">All matches</button><button class="filter-btn" data-filter="Champions League">Champions League</button><button class="filter-btn" data-filter="Europa League">Europa League</button><button class="filter-btn" data-filter="Conference League">Conference League</button><button class="filter-btn" data-filter="National Teams">National teams</button>
+  </div>
+  <div class="two-col" id="match-centre">
+    <div><div class="fixtures-list" id="fixturesList"></div></div>
+    <aside class="standing-card"><h3><i class="fa-solid fa-ranking-star" style="color:#b18b45;margin-right:7px"></i>League snapshot</h3><div class="table-row head"><span>#</span><span>Club</span><span>PL</span><span>PTS</span></div>
+      <div class="table-row"><span class="rank">01</span><span class="club">Real Madrid</span><span>5</span><span class="pts">13</span></div><div class="table-row"><span class="rank">02</span><span class="club">Bayern Munich</span><span>5</span><span class="pts">12</span></div><div class="table-row"><span class="rank">03</span><span class="club">Liverpool</span><span>5</span><span class="pts">12</span></div><div class="table-row"><span class="rank">04</span><span class="club">Inter</span><span>5</span><span class="pts">11</span></div><div class="table-row"><span class="rank">05</span><span class="club">Barcelona</span><span>5</span><span class="pts">10</span></div>
+      <p style="font-size:8px;color:#9aa3b1;margin:13px 0 0">Illustrative sample standings · 2026/27</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="competitions" style="padding-top:10px">
+  <div class="section-head"><div><div class="section-kicker">One continent. Countless stories.</div><h2 class="section-title">Explore <span>competitions</span></h2></div><a class="view-link" href="#competitions">Discover all <i class="fa-solid fa-arrow-right"></i></a></div>
+  <div class="competition-strip">
+    <a class="competition-card" href="#fixtures" data-comp="Champions League"><div class="competition-icon"><i class="fa-solid fa-star"></i></div><div><h3>Champions League</h3><p>Europe's premier club competition</p></div><i class="fa-solid fa-arrow-right arrow"></i></a>
+    <a class="competition-card" href="#fixtures" data-comp="Europa League"><div class="competition-icon"><i class="fa-solid fa-trophy"></i></div><div><h3>Europa League</h3><p>Glory has a second home</p></div><i class="fa-solid fa-arrow-right arrow"></i></a>
+    <a class="competition-card" href="#fixtures" data-comp="Conference League"><div class="competition-icon"><i class="fa-solid fa-medal"></i></div><div><h3>Conference League</h3><p>More clubs. More dreams.</p></div><i class="fa-solid fa-arrow-right arrow"></i></a>
+    <a class="competition-card" href="#national" data-comp="National Teams"><div class="competition-icon"><i class="fa-solid fa-earth-europe"></i></div><div><h3>European Championship</h3><p>The continent's finest national sides</p></div><i class="fa-solid fa-arrow-right arrow"></i></a>
+    <a class="competition-card" href="#national" data-comp="National Teams"><div class="competition-icon"><i class="fa-solid fa-flag"></i></div><div><h3>Nations League</h3><p>International football, reimagined</p></div><i class="fa-solid fa-arrow-right arrow"></i></a>
+  </div>
+</section>
+
+<section class="section" id="national" style="padding-top:0">
+  <div class="newsletter"><div><div class="eyebrow">Stay in the game</div><h2>Football, straight to your inbox.</h2><p>Get the latest stories, match updates and competition news.</p></div><form class="subscribe" id="subscribeForm"><input type="email" placeholder="Your email address" aria-label="Your email address" required><button type="submit">Sign me up <i class="fa-solid fa-arrow-right"></i></button></form></div>
+</section>
 </main>
 
-<footer>
-  <div class="container">
-    <div class="logo">UEFA<span>26</span></div>
-    <p style="margin-top:12px">
-      European Football Dashboard · 2026/27
-    </p>
-    <p style="margin-top:8px">
-      Unofficial fan-made demo. Not affiliated with UEFA.
-    </p>
-  </div>
-</footer>
+<footer><div class="footer-inner"><div><a class="brand footer-brand" href="#home"><span class="brand-mark"><i class="fa-solid fa-star"></i></span><span class="brand-copy"><strong>UEFA</strong><small>THE HOME OF FOOTBALL</small></span></a><p class="footer-copy">Celebrating the best of European football. Explore competitions, follow your teams and experience the moments that bring us together.</p></div><div class="footer-links"><a href="#competitions">Competitions</a><a href="#fixtures">Matches</a><a href="#news">News</a><a href="#national">National teams</a></div></div><div class="copyright"><span>© 2026 UEFA-inspired fan experience. Unofficial demo website.</span><span>All match data shown is illustrative.</span></div></footer>
+
+<div class="modal-backdrop" id="modal"><div class="modal"><button class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button><div class="tag" id="modalTag">Match centre</div><h2 id="modalTitle">Match details</h2><div id="modalBody"></div></div></div>
+<div class="search-panel" id="searchPanel"><div class="search-box"><input id="searchInput" type="search" placeholder="Search teams, competitions, news..." autocomplete="off"><button id="searchClose" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button><div class="search-hint">Try “Champions League”, “Madrid” or “fixtures”. Press Enter to search this page.</div></div></div>
 
 <script>
-
-// DEMO DATA — Replace with verified match data or a live API.
-
-const matches = [
-  {
-    home:"Real Madrid", away:"Liverpool",
-    homeFlag:"🇪🇸", awayFlag:"🏴",
-    homeScore:2, awayScore:1,
-    date:"04 Nov 2026", time:"20:00",
-    competition:"Champions League",
-    status:"Finished"
-  },
-  {
-    home:"Barcelona", away:"Bayern Munich",
-    homeFlag:"🇪🇸", awayFlag:"🇩🇪",
-    homeScore:3, awayScore:2,
-    date:"04 Nov 2026", time:"20:00",
-    competition:"Champions League",
-    status:"Finished"
-  },
-  {
-    home:"Arsenal", away:"AC Milan",
-    homeFlag:"🏴", awayFlag:"🇮🇹",
-    homeScore:null, awayScore:null,
-    date:"05 Nov 2026", time:"20:00",
-    competition:"Europa League",
-    status:"Upcoming"
-  },
-  {
-    home:"Roma", away:"Ajax",
-    homeFlag:"🇮🇹", awayFlag:"🇳🇱",
-    homeScore:1, awayScore:1,
-    date:"03 Nov 2026", time:"18:45",
-    competition:"Europa League",
-    status:"Finished"
-  },
-  {
-    home:"Chelsea", away:"Dortmund",
-    homeFlag:"🏴", awayFlag:"🇩🇪",
-    homeScore:null, awayScore:null,
-    date:"06 Nov 2026", time:"21:00",
-    competition:"Conference League",
-    status:"Upcoming"
-  },
-  {
-    home:"PSG", away:"Inter",
-    homeFlag:"🇫🇷", awayFlag:"🇮🇹",
-    homeScore:2, awayScore:0,
-    date:"02 Nov 2026", time:"20:00",
-    competition:"Champions League",
-    status:"Finished"
-  }
+const matches=[
+ {date:"20 NOV",day:"FRIDAY",home:"Paris Saint-Germain",away:"Arsenal",h:"🔴",a:"🔴",time:"20:00",comp:"Champions League",status:"UPCOMING",venue:"Parc des Princes, Paris"},
+ {date:"21 NOV",day:"SATURDAY",home:"Bayern Munich",away:"Inter",h:"🔴",a:"🔵",time:"18:45",comp:"Champions League",status:"UPCOMING",venue:"Allianz Arena, Munich"},
+ {date:"21 NOV",day:"SATURDAY",home:"Roma",away:"Real Betis",h:"🟡",a:"🟢",time:"21:00",comp:"Europa League",status:"UPCOMING",venue:"Stadio Olimpico, Rome"},
+ {date:"22 NOV",day:"SUNDAY",home:"Aston Villa",away:"Fiorentina",h:"🟣",a:"🟣",time:"18:45",comp:"Conference League",status:"UPCOMING",venue:"Villa Park, Birmingham"},
+ {date:"22 NOV",day:"SUNDAY",home:"France",away:"Germany",h:"🇫🇷",a:"🇩🇪",time:"20:45",comp:"National Teams",status:"UPCOMING",venue:"Stade de France, Paris"},
+ {date:"18 NOV",day:"TUESDAY",home:"Barcelona",away:"Liverpool",h:"🔵",a:"🔴",time:"2 — 1",comp:"Champions League",status:"FINISHED",venue:"Estadi Olímpic, Barcelona"},
+ {date:"17 NOV",day:"MONDAY",home:"Ajax",away:"Porto",h:"⚪",a:"🔵",time:"1 — 1",comp:"Europa League",status:"FINISHED",venue:"Johan Cruyff Arena, Amsterdam"}
 ];
-
-let activeFilter = "All";
-
-const matchList = document.getElementById("matchList");
-const resultList = document.getElementById("resultList");
-const search = document.getElementById("search");
-
-function renderMatches() {
-  const term = search.value.toLowerCase();
-
-  const filtered = matches.filter(match => {
-    const category = activeFilter === "All" ||
-      match.competition === activeFilter;
-
-    const keyword =
-      match.home.toLowerCase().includes(term) ||
-      match.away.toLowerCase().includes(term) ||
-      match.competition.toLowerCase().includes(term);
-
-    return category && keyword;
-  });
-
-  matchList.innerHTML = filtered.map(match => {
-
-    const finished = match.status === "Finished";
-    const statusClass = finished ? "finished" :
-      match.status === "Live" ? "live" : "";
-
-    const score = finished
-      ? `${match.homeScore} - ${match.awayScore}`
-      : match.status === "Live"
-        ? `${match.homeScore} - ${match.awayScore}`
-        : "VS";
-
-    return `
-      <article class="match">
-        <div class="match-top">
-          <span>${match.competition}</span>
-          <span class="status ${statusClass}">
-            ${match.status.toUpperCase()}
-          </span>
-        </div>
-
-        <div class="teams">
-          <div class="team">
-            <span class="flag">${match.homeFlag}</span>
-            ${match.home}
-          </div>
-
-          <div class="score">
-            ${score}
-          </div>
-
-          <div class="team">
-            <span class="flag">${match.awayFlag}</span>
-            ${match.away}
-          </div>
-        </div>
-
-        <div class="match-bottom">
-          <span>${match.date}</span>
-          <span>${match.time}</span>
-        </div>
-      </article>
-    `;
-  }).join("");
-
-  if (!filtered.length) {
-    matchList.innerHTML =
-      '<p style="color:#8997ad">No matches found.</p>';
-  }
+const list=document.getElementById('fixturesList');
+function renderMatches(filter='all'){
+ const data=matches.filter(m=>filter==='all'||m.comp===filter);
+ list.innerHTML=data.map((m,i)=>`<article class="fixture-card" tabindex="0" role="button" aria-label="View ${m.home} versus ${m.away}" data-index="${matches.indexOf(m)}"><div class="fixture-date"><strong>${m.date}</strong>${m.day}</div><div class="fixture-teams"><div class="mini-team"><span class="crest">${m.h}</span>${m.home}</div><div class="mini-team"><span class="crest">${m.a}</span>${m.away}</div></div><div class="${m.status==='FINISHED'?'result-score':'fixture-time'}">${m.time}<small>${m.status==='FINISHED'?'FULL TIME':m.status}</small></div></article>`).join('')||'<div class="empty-state">No matches found for this competition.</div>';
 }
-
-function renderResults() {
-  resultList.innerHTML = matches
-    .filter(match => match.status === "Finished")
-    .map(match => `
-      <tr>
-        <td>${match.date}</td>
-        <td class="team-name">${match.home}</td>
-        <td><strong>${match.homeScore} - ${match.awayScore}</strong></td>
-        <td class="team-name">${match.away}</td>
-        <td>${match.competition}</td>
-      </tr>
-    `).join("");
-}
-
-document.querySelectorAll(".filter").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".filter")
-      .forEach(item => item.classList.remove("active"));
-
-    button.classList.add("active");
-    activeFilter = button.dataset.filter;
-    renderMatches();
-  });
-});
-
-search.addEventListener("input", renderMatches);
-
 renderMatches();
-renderResults();
-
+document.getElementById('filters').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(!b)return;document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderMatches(b.dataset.filter)});
+document.querySelectorAll('.competition-card').forEach(c=>c.addEventListener('click',()=>{const f=c.dataset.comp;document.querySelectorAll('.filter-btn').forEach(x=>x.classList.toggle('active',x.dataset.filter===f));renderMatches(f)}));
+function showModal(title,tag,body){document.getElementById('modalTitle').textContent=title;document.getElementById('modalTag').textContent=tag;document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('open')}
+list.addEventListener('click',e=>{const card=e.target.closest('.fixture-card');if(!card)return;const m=matches[+card.dataset.index];showModal(`${m.home} vs ${m.away}`,m.comp,`<div class="modal-score">${m.h} &nbsp; ${m.time} &nbsp; ${m.a}</div><p><strong>${m.status}</strong> · ${m.date} · ${m.time==='2 — 1'||m.time==='1 — 1'?'Final score':'Kick-off time (CET)'}</p><p><i class="fa-solid fa-location-dot"></i> &nbsp;${m.venue}</p><p>This is a sample match-centre view. Official live scores, line-ups and statistics are not connected in this demo.</p>`)}); 
+document.getElementById('modalClose').onclick=()=>document.getElementById('modal').classList.remove('open');
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('open')});
+document.querySelectorAll('.read-more').forEach(b=>b.addEventListener('click',()=>showModal(b.dataset.article,'Latest news',`<p>${b.dataset.article}. Follow the latest developments from across European football, with competition updates, team stories and analysis.</p><p>This is demonstration editorial content for the website template.</p>`)));
+document.getElementById('menuToggle').onclick=()=>{document.getElementById('mainNav').classList.toggle('open');document.getElementById('menuToggle').innerHTML=document.getElementById('mainNav').classList.contains('open')?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'};
+document.querySelectorAll('#mainNav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mainNav').classList.remove('open')));
+document.getElementById('themeToggle').onclick=()=>{document.body.classList.toggle('light');document.getElementById('themeToggle').innerHTML=document.body.classList.contains('light')?'<i class="fa-solid fa-moon"></i>':'<i class="fa-regular fa-sun"></i>'};
+const searchPanel=document.getElementById('searchPanel'),searchInput=document.getElementById('searchInput');
+document.getElementById('searchOpen').onclick=()=>{searchPanel.classList.add('open');searchInput.focus()};
+document.getElementById('searchClose').onclick=()=>searchPanel.classList.remove('open');
+searchPanel.addEventListener('click',e=>{if(e.target===searchPanel)searchPanel.classList.remove('open')});
+function doSearch(){const q=searchInput.value.trim().toLowerCase();if(!q)return;searchPanel.classList.remove('open');const target=[...document.querySelectorAll('main section, .news-card, .competition-card')].find(el=>el.innerText.toLowerCase().includes(q));if(target){target.scrollIntoView({behavior:'smooth',block:'center'});target.animate([{outline:'2px solid #d8b66a'},{outline:'2px solid transparent'}],{duration:1300})}else showModal('No results found','Search',`<p>We couldn't find “${searchInput.value}”. Try a team name, competition or news keyword.</p>`)}
+searchInput.addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();if(e.key==='Escape')searchPanel.classList.remove('open')});
+document.getElementById('profileBtn').onclick=()=>showModal('Welcome to UEFA','Your football account','<p>Sign-in and personal team preferences would be connected here in a production website.</p><button class="btn btn-gold" onclick="document.getElementById(\\'modal\\').classList.remove(\\'open\\')">Continue browsing</button>');
+document.getElementById('subscribeForm').addEventListener('submit',e=>{e.preventDefault();const email=e.currentTarget.querySelector('input').value;showModal('You’re on the list!','Newsletter',`<p>Thanks for subscribing with <strong>${email.replace(/[<>&"]/g,'')}</strong>. This demo confirms the form locally; no email has been sent.</p>`);e.currentTarget.reset()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){searchPanel.classList.remove('open');document.getElementById('modal').classList.remove('open')}});
 </script>
-
 </body>
 </html>
